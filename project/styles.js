@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     addButtonContainer: {
-        margin: 50,
+        margin: 30,
+        marginTop: '20%',
     },
     camera: {
         width: 400,
@@ -65,11 +66,11 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     shadowBox: {
-        width: 210,
+        width: '100%',
         height: 110,
         backgroundColor: 'white',
-        elevation: 10, // 影の強さを設定
-        borderRadius: 10, // 長方形の角を丸める場合に使用
+        elevation: 10,
+        borderRadius: 10,
     },
 
 });

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ScrollView, View, Text } from 'react-native';
-import { Button, Icon } from 'react-native-elements';
+import { Icon } from 'react-native-elements';
+import { Button } from '@rneui/themed';
 import styles from './styles';
 
 function HomeScreen({ navigation }) {
@@ -19,7 +20,7 @@ function HomeScreen({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.addButtonContainer}>
-                <Button icon={
+                <Button radius={15} icon={
                     <Icon
                         name="add"
                         type="material"
