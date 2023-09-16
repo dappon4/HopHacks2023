@@ -24,7 +24,7 @@ function AddScreen({ navigation, route }) {
         });
 
         try {
-            const response = await fetch('http://159.223.136.17/scan_check', {
+            const response = await fetch('http://159.223.136.17:5000/scan_check', {
                 method: 'POST',
                 body: imgData,
                 headers: {
@@ -34,12 +34,15 @@ function AddScreen({ navigation, route }) {
             if (response.ok) {
                 const responseData = await response.json();
                 console.log('server response:', responseData);
+                navigation.navigate('Compatibility', { drugName: responseData })
             } else {
                 console.error('server error:', response.status, response.statusText);
             }
         } catch (error) {
             console.error('network error:', error);
         }
+
+
     };
 
     const pickImageFromGallery = async () => {
