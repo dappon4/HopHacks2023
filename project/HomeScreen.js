@@ -21,7 +21,9 @@ function HomeScreen({ navigation }) {
             {/* 長方形のテキストを表示 */}
             {textData.map((text, index) => (
                 <View key={index} style={styles.rectangle}>
-                    <Text style={styles.rectangleText}>{text}</Text>
+                    <View style={styles.shadowBox}>
+                        <Text style={styles.rectangleText}>{text}</Text>
+                    </View>
                 </View>
             ))}
 

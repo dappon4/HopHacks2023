@@ -41,15 +41,26 @@ const styles = StyleSheet.create({
     },
     rectangle: {
         width: 200,
-        height: 100,
+        height: 50,
         backgroundColor: 'white',
         justifyContent: 'center',
         alignItems: 'center',
-        marginVertical: 10,
+        marginVertical: 5,
+        borderWidth: 2,
+        marginVertical: 60, // 上下の余白を設定
+        marginHorizontal: 20,
     },
     rectangleText: {
         color: 'black', // テキストの色
         fontSize: 16, // テキストのフォントサイズ
+        alignSelf: 'center'
+    },
+    shadowBox: {
+        width: 210,
+        height: 100,
+        backgroundColor: 'white',
+        elevation: 50, // 影の強さを設定
+        borderRadius: 10, // 長方形の角を丸める場合に使用
     },
 });
 
