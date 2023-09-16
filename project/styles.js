@@ -102,8 +102,6 @@ const styles = StyleSheet.create({
         height: 300,
         width: 300,
         borderColor: 'lightblue',
-        borderWidth: 3,
-        borderStyle: 'dashed',
         alignSelf: 'center'
     }
 

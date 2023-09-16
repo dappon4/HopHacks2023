@@ -8,6 +8,8 @@ import { selectImage } from './SelectImage';
 
 import camLogo from './components/Images/camLogo.png'
 import uploadimg from './components/Images/uploadimg.png'
+import greendots from './components/Images/greendots.png'
+import orBlack from './components/Images/orBlack.png'
 
 function AddScreen({ navigation, route }) {
     const [selectedPhoto, setSelectedPhoto] = useState(null);
@@ -100,37 +102,36 @@ function AddScreen({ navigation, route }) {
         <View>
             {!selectedPhoto && (
                 <View style={styles.photoHolder}>
+                    <Image source={greendots} style={{ width: '100%', height: '100%', position: 'absolute' }} resizeMode='contain' />
                     <View style={styles.buttonContainer}>
-                        <TouchableOpacity onPress={() => navigation.navigate('Camera')}><Image source={camLogo} style={{ width: 100, height: 100, margin: 20 }} resizeMode="contain" /></TouchableOpacity>
-                        <TouchableOpacity onPress={pickImageFromGallery} ><Image source={uploadimg} style={{ width: 100, height: 100, margin: 20 }} resizeMode="contain" /></TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('Camera')}><Image source={camLogo} style={{ width: 90, height: 90, margin: 25 }} resizeMode="contain" /></TouchableOpacity>
+                        <TouchableOpacity onPress={pickImageFromGallery} ><Image source={uploadimg} style={{ width: 90, height: 90, margin: 25 }} resizeMode="contain" /></TouchableOpacity>
                     </View>
                 </View>
             )}
             {
                 selectedPhoto && (
-                    <Image source={{ uri: selectedPhoto.uri }} style={styles.image} />
-                )
-            }
-            {
-                selectedPhoto && (
-                    <Button title="send to server" onPress={sendImageToServer} />
-                )
-            }
+                    <View>
+                        <Image source={{ uri: selectedPhoto.uri }} style={styles.image} />
+                        <Button title="send to server" onPress={sendImageToServer} />
 
+                    </View>
+                )
+            }
 
             {
                 error && (
                     <Text style={styles.errorText}>{error}</Text>
                 )
             }
-            <Text style={{ alignSelf: 'center', fontSize: 30 }}>OR</Text>
+            <Image source={orBlack} style={{ width: 100, height: 100, alignSelf: 'center' }} resizeMode='contain' />
             <View>
                 <TextInput style={styles.textContainer}
                     placeholder="Enter drug name"
                     onChangeText={handleInputChange} // 入力値の変更を検知して関数を呼び出す
                     value={inputValue} // 入力値を状態に紐付ける
                 />
-                <Button title="send" onPress={sendTextToServer} />
+                <Button title="OK" style={{ width: '30%' }} onPress={sendTextToServer} />
 
             </View>
 
