@@ -17,8 +17,8 @@ function HomeScreen({ navigation }) {
     }, [rectangleCount]);
 
     return (
-        <View>
-            <View>
+        <View style={styles.container}>
+            <View style={styles.addButtonContainer}>
                 <Button title="Go to add" onPress={() => navigation.navigate('Add')} />
             </View>
             <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -34,8 +34,6 @@ function HomeScreen({ navigation }) {
                     title="Change Rectangle Count"
                     onPress={() => setRectangleCount(rectangleCount + 1)}
                 />
-
-
             </ScrollView>
         </View>
     );

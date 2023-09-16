@@ -14,6 +14,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    addButtonContainer: {
+        marginTop: 0,
+    },
     camera: {
         width: 400,
         height: 400,
