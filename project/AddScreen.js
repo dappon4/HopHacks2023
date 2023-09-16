@@ -63,15 +63,19 @@ function AddScreen({ navigation, route }) {
     return (
         <View>
             {selectedPhoto && (
-                <Image source={{ uri: selectedPhoto.uri }} style={styles.image} /> // 画像をImageコンポーネントで表示
+                <Image source={{ uri: selectedPhoto.uri }} style={styles.image} />
+            )}
+            {selectedPhoto && (
+                <Button title="send to server" onPress={sendImageToServer} />
+            )}
+            {!selectedPhoto && (
+                <View style={styles.photoHolder}></View>
             )}
             <View style={styles.buttonContainer}>
                 <Button title="Activate Camera" buttonStyle={styles.addPicture} type='outline' radius={15} onPress={() => navigation.navigate('Camera')} />
                 <Button title="Pick from Gallery" buttonStyle={styles.addPicture} type='outline' radius={15} onPress={pickImageFromGallery} />
             </View>
-            {selectedPhoto && (
-                <Button title="send to server" onPress={sendImageToServer} />
-            )}
+
             {error && (
                 <Text style={styles.errorText}>{error}</Text>
             )}

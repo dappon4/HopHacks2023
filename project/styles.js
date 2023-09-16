@@ -29,18 +29,18 @@ const styles = StyleSheet.create({
     },
 
     camera: {
-        width: 400,
-        height: 400,
+        width: 300,
+        height: 300,
         marginBottom: 10,
         marginTop: 50,
         alignSelf: 'center',
 
     },
     image: {
-        width: 400,
-        height: 400,
+        width: 300,
+        height: 300,
         marginBottom: 10,
-        marginTop: 10,
+        marginTop: 100,
         alignSelf: 'center',
     },
     shutterButtonContainer: {
@@ -91,6 +91,16 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         color: 'red',
         fontSize: 20,
+    },
+    photoHolder: {
+        margin: 10,
+        marginTop: 100,
+        height: 300,
+        width: 300,
+        borderColor: 'lightblue',
+        borderWidth: 3,
+        borderStyle: 'dashed',
+        alignSelf: 'center'
     }
 
 });
