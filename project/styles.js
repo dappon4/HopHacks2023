@@ -39,6 +39,18 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         marginBottom: 20,
     },
+    rectangle: {
+        width: 200,
+        height: 100,
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginVertical: 10,
+    },
+    rectangleText: {
+        color: 'black', // テキストの色
+        fontSize: 16, // テキストのフォントサイズ
+    },
 });
 
 export default styles;
