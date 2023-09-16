@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ScrollView, View, Text } from 'react-native';
-import { Button } from 'react-native-elements';
+import { Button, Icon } from 'react-native-elements';
 import styles from './styles';
 
 function HomeScreen({ navigation }) {
@@ -19,7 +19,14 @@ function HomeScreen({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.addButtonContainer}>
-                <Button title="+" onPress={() => navigation.navigate('Add')} />
+                <Button icon={
+                    <Icon
+                        name="add"
+                        type="material"
+                        size={30}
+                        color="white"
+                    />
+                } onPress={() => navigation.navigate('Add')} />
             </View>
             <ScrollView contentContainerStyle={styles.scrollContainer}>
                 {textData.map((text, index) => (

@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
         bottom: '20%',
         zIndex: 1,
     },
-    addButtons: {
+    addPicture: {
         margin: 10,
         width: 150,
         height: 150
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     rectangle: {
-        width: 400,
+        width: 300,
         height: 100,
         backgroundColor: 'white',
         justifyContent: 'center',

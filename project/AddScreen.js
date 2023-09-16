@@ -61,8 +61,8 @@ function AddScreen({ navigation, route }) {
                 <Image source={{ uri: selectedPhoto.uri }} style={styles.image} /> // 画像をImageコンポーネントで表示
             )}
             <View style={styles.buttonContainer}>
-                <Button title="Activate Camera" buttonStyle={styles.addButtons} type='outline' radius={15} onPress={() => navigation.navigate('Camera')} />
-                <Button title="Pick from Gallery" buttonStyle={styles.addButtons} type='outline' radius={15} onPress={pickImageFromGallery} />
+                <Button title="Activate Camera" buttonStyle={styles.addPicture} type='outline' radius={15} onPress={() => navigation.navigate('Camera')} />
+                <Button title="Pick from Gallery" buttonStyle={styles.addPivture} type='outline' radius={15} onPress={pickImageFromGallery} />
             </View>
             {selectedPhoto && (
                 <Button title="send to server" onPress={sendImageToServer} />
