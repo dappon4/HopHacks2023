@@ -18,7 +18,8 @@ function CompatibilityScreen({ navigation, route }) {
 
     return (
         <View>
-            Check Compatibility
+            <Text>Detected drug: {drugName}</Text>
+            <Button>Redo</Button>
 
         </View>
     );
