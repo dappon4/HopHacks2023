@@ -17,10 +17,11 @@ function CompatibilityScreen({ navigation, route }) {
 
 
     return (
-        <View>
-            <Text>Detected drug: {drugName}</Text>
-            <Text>Check Compatibility</Text>
 
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text style={{ fontSize: 30 }}>Detected drug: {drugName}</Text>
+            <Button title="retry" onPress={() => navigation.navigate("Add")}></Button>
+            <Text style={{ fontSize: 30 }}>Check Compatibility</Text>
         </View>
     );
 }

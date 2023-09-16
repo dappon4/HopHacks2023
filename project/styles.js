@@ -39,6 +39,12 @@ const styles = StyleSheet.create({
         bottom: '20%',
         zIndex: 1,
     },
+
+    detectedContainer: {
+        margin: 10,
+        alignContent: 'center',
+    },
+
     addPicture: {
         margin: 10,
         width: 150,
