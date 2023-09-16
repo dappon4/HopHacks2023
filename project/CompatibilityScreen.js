@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { View, Image, } from 'react-native';
+import { View, Image, Text } from 'react-native';
 import { Button } from '@rneui/themed';
 import styles from './styles';
 import * as ImagePicker from 'expo-image-picker';
@@ -17,10 +17,11 @@ function CompatibilityScreen({ navigation, route }) {
 
 
     return (
-        <View>
-            <Text>Detected drug: {drugName}</Text>
-            <Button>Redo</Button>
 
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text style={{ fontSize: 30 }}>Detected drug: {drugName}</Text>
+            <Button title="retry" onPress={() => navigation.navigate("Add")}></Button>
+            <Text style={{ fontSize: 30 }}>Check Compatibility</Text>
         </View>
     );
 }
