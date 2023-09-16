@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { View, Image, } from 'react-native';
+import { View, Image, Text } from 'react-native';
 import { Button } from '@rneui/themed';
 import styles from './styles';
 import * as ImagePicker from 'expo-image-picker';
@@ -18,7 +18,8 @@ function CompatibilityScreen({ navigation, route }) {
 
     return (
         <View>
-            Check Compatibility
+            <Text>{drugName}</Text>
+            <Text>Check Compatibility</Text>
 
         </View>
     );
