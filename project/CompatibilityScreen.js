@@ -18,7 +18,7 @@ function CompatibilityScreen({ navigation, route }) {
 
     return (
         <View>
-            <Text>{drugName}</Text>
+            <Text>Detected drug: {drugName}</Text>
             <Text>Check Compatibility</Text>
 
         </View>
