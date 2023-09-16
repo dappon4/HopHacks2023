@@ -17,7 +17,7 @@ function AddScreen({ navigation, route }) {
 
     const sendImageToServer = async () => {
         const imgData = new FormData();
-        imgData.append('photo', {
+        imgData.append('Medicineimage', {
             uri: selectedPhoto.uri,
             type: 'image/jpeg',
             name: 'photo.jpg',
@@ -34,6 +34,7 @@ function AddScreen({ navigation, route }) {
             if (response.ok) {
                 const responseData = await response.json();
                 console.log('server response:', responseData);
+
                 navigation.navigate('Compatibility', { drugName: responseData })
             } else {
                 console.error('server error:', response.status, response.statusText);
@@ -41,8 +42,6 @@ function AddScreen({ navigation, route }) {
         } catch (error) {
             console.error('network error:', error);
         }
-
-
     };
 
     const pickImageFromGallery = async () => {
