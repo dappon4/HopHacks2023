@@ -1,13 +1,23 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { View, Text } from 'react-native';
+import { StatusBar, View, Text, Image, TouchableWithoutFeedback } from 'react-native';
 import { Camera } from 'expo-camera';
-import { Icon, } from 'react-native-elements';
+import { ThemeProvider } from 'react-native-elements';
 import styles from './styles';
+
+// Define a custom theme for the Icon component
+const customTheme = {
+    Icon: {
+        iconStyle: {
+            borderColor: 'white',
+            borderWidth: 1,
+            borderRadius: 30,
+            padding: 5,
+        },
+    },
+};
 
 function CameraScreen({ navigation }) {
     const [hasPermission, setHasPermission] = useState(null);
-
     const cameraRef = useRef(null);
 
     useEffect(() => {
@@ -33,25 +43,25 @@ function CameraScreen({ navigation }) {
     }
 
     return (
-        <View>
-            <Camera
-                style={styles.camera}
-                type={Camera.Constants.Type.back}
-                ref={cameraRef}
-            />
-            <View style={styles.shutterButtonContainer}>
-                <Icon
-                    name="camera"
-                    type="font-awesome"
-                    color="black"
-                    size={50}
-                    onPress={takePicture}
+        <ThemeProvider theme={customTheme}>
+            <View>
+                <Camera
+                    style={styles.camera}
+                    type={Camera.Constants.Type.back}
+                    ref={cameraRef}
                 />
+                <View style={styles.shutterButtonContainer}>
+                    <TouchableWithoutFeedback onPress={takePicture}>
+                        <Image
+                            source={require('./components/Images/camLogo.png')} // Adjust the path accordingly
+                            style={{ width: 60, height: 60 }} // Define the size of your image
+                        />
+                    </TouchableWithoutFeedback>
+                </View>
+                <StatusBar style="auto" />
             </View>
-            <StatusBar style="auto" />
-        </View>
-    )
+        </ThemeProvider>
+    );
 }
-
 
 export default CameraScreen;
