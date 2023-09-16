@@ -19,11 +19,20 @@ const styles = StyleSheet.create({
         margin: 30,
         marginTop: '20%',
     },
+    cameraContainer: {
+        marginTop: '10%',
+        alignSelf: 'center',
+        width: 400,
+        height: 400,
+        borderRadius: 30,
+        overflow: 'hidden'
+    },
+
     camera: {
         width: 400,
         height: 400,
         marginBottom: 10,
-        marginTop: 10,
+        marginTop: 50,
         alignSelf: 'center',
 
     },

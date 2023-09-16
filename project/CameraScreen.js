@@ -44,12 +44,14 @@ function CameraScreen({ navigation }) {
 
     return (
         <ThemeProvider theme={customTheme}>
-            <View>
+            <View style={styles.cameraContainer}>
                 <Camera
                     style={styles.camera}
                     type={Camera.Constants.Type.back}
                     ref={cameraRef}
                 />
+            </View>
+            <View>
                 <View style={styles.shutterButtonContainer}>
                     <TouchableWithoutFeedback onPress={takePicture}>
                         <Image
@@ -60,7 +62,7 @@ function CameraScreen({ navigation }) {
                 </View>
                 <StatusBar style="auto" />
             </View>
-        </ThemeProvider>
+        </ThemeProvider >
     );
 }
 
