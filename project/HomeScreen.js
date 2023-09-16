@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ScrollView, View, Text } from 'react-native';
+import { ScrollView, View, Text, Image } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { Button } from '@rneui/themed';
 import styles from './styles';
+import logo from './components/Images/logo.png'
 
 function HomeScreen({ navigation }) {
     const [textData, setTextData] = useState([]);
@@ -20,6 +21,7 @@ function HomeScreen({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.addButtonContainer}>
+                <Image source={logo} style={{ height: 100 }} resizeMode='contain' />
                 <Button radius={15} icon={
                     <Icon
                         name="add"
@@ -29,7 +31,7 @@ function HomeScreen({ navigation }) {
                     />
                 } onPress={() => navigation.navigate('Add')} />
             </View>
-            <ScrollView contentContainerStyle={styles.scrollContainer}>
+            <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
                 {textData.map((text, index) => (
                     <View key={index} style={styles.rectangle}>
                         <View style={styles.shadowBox}>

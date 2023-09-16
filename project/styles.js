@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     },
     addButtonContainer: {
         margin: 30,
-        marginTop: '20%',
+        marginTop: 0,
     },
     cameraContainer: {
         marginTop: '10%',
