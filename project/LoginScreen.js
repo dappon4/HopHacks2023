@@ -4,8 +4,10 @@ import styles from './styles';
 import { useNavigation } from '@react-navigation/native';
 import MediMinglelogo from './components/Images/MediMinglelogo.png';
 import MingleImage from './components/Images/mingle.png';
-import LoginBtnImage from './components/Images/loginBtn.png';
+import login from './components/Images/login.png';
 import HaveAccountImage from './components/Images/haveAccount.png'; // Import the haveAccount.png image
+import signUp from './components/Images/signUp.png';
+
 
 function LoginScreen() {
     const navigation = useNavigation();
@@ -15,14 +17,14 @@ function LoginScreen() {
     };
 
     return (
-        <View style={styles.container}>
+        <View style={{ alignItems: 'center' }}>
             {/* Logo */}
             <Image
                 source={MediMinglelogo}
                 style={{
                     width: 200,
                     height: 200,
-                    marginTop: 200,
+                    marginTop: 100,
                     marginBottom: 20,
                 }}
                 resizeMode="contain"
@@ -35,35 +37,37 @@ function LoginScreen() {
                     width: 300,
                     height: 300,
                     marginTop: 0,
-                    marginBottom: 30,
+
                 }}
                 resizeMode="contain"
             />
+            <View>
+                {/* Login Button Image with TouchableOpacity */}
+                <TouchableOpacity onPress={handleLoginBtnPress}>
+                    <Image
+                        source={login}
+                        style={{
+                            width: 150,
+                            height: 150,
 
-            {/* Login Button Image with TouchableOpacity */}
-            <TouchableOpacity onPress={handleLoginBtnPress}>
+
+                        }}
+                        resizeMode="contain"
+                    />
+                </TouchableOpacity>
+
+                {/* Have Account Image */}
                 <Image
-                    source={LoginBtnImage}
+                    source={signUp}
                     style={{
-                        width: 250,
-                        height: 250,
-                        MarginTop: 100,
+                        width: 150,
+                        height: 150,
+                        marginTop: -50
 
                     }}
                     resizeMode="contain"
                 />
-            </TouchableOpacity>
-
-            {/* Have Account Image */}
-            <Image
-                source={HaveAccountImage}
-                style={{
-                    width: 200,
-                    height: 100,
-
-                }}
-                resizeMode="contain"
-            />
+            </View>
         </View>
     );
 }
