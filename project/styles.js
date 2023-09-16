@@ -67,10 +67,7 @@ const styles = StyleSheet.create({
         height: 150
     },
     buttonContainer: {
-        flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-around',
-        marginBottom: 20,
     },
     rectangle: {
         width: 300,

@@ -6,7 +6,7 @@ import styles from './styles';
 
 function HomeScreen({ navigation }) {
     const [textData, setTextData] = useState([]);
-    const [rectangleCount, setRectangleCount] = useState(5); // 長方形の数を設定
+    const [rectangleCount, setRectangleCount] = useState(3); // 長方形の数を設定
 
     // 長方形のテキストデータを生成
     useEffect(() => {

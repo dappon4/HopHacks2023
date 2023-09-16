@@ -1,58 +1,69 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Text, TextInput, Button } from 'react-native';
+import React from 'react';
+import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import styles from './styles';
+import { useNavigation } from '@react-navigation/native';
+import MediMinglelogo from './components/Images/MediMinglelogo.png';
+import MingleImage from './components/Images/mingle.png';
+import LoginBtnImage from './components/Images/loginBtn.png';
+import HaveAccountImage from './components/Images/haveAccount.png'; // Import the haveAccount.png image
 
-function LoginScreen({ navigation }) {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+function LoginScreen() {
+    const navigation = useNavigation();
 
-    const handleLogin = () => {
-        // ユーザー名とパスワードを使用してサーバーにログインリクエストを送信する処理をここに追加
-        // この例ではfetchを使用しますが、実際のサーバーに合わせてカスタマイズしてください。
-        fetch('https://your-server-url.com/api/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                username,
-                password,
-            }),
-        })
-            .then((response) => {
-                if (response.ok) {
-                    // ログイン成功時の処理をここに追加
-                    console.log('ログイン成功');
-                    navigation.navigate('Home'); // ログイン後の画面に遷移
-                } else {
-                    // ログイン失敗時の処理をここに追加
-                    console.error('ログイン失敗');
-                }
-            })
-            .catch((error) => {
-                console.error('ネットワークエラー:', error);
-            });
+    const handleLoginBtnPress = () => {
+        navigation.navigate('Home');
     };
 
     return (
         <View style={styles.container}>
-            <Text>ユーザー名:</Text>
-            <TextInput
-                style={styles.input}
-                onChangeText={(text) => setUsername(text)}
-                value={username}
-                placeholder="ユーザー名を入力"
+            {/* Logo */}
+            <Image
+                source={MediMinglelogo}
+                style={{
+                    width: 200,
+                    height: 200,
+                    marginTop: 200,
+                    marginBottom: 20,
+                }}
+                resizeMode="contain"
             />
-            <Text>パスワード:</Text>
-            <TextInput
-                style={styles.input}
-                onChangeText={(text) => setPassword(text)}
-                value={password}
-                placeholder="パスワードを入力"
-                secureTextEntry={true} // パスワードを隠す
+
+            {/* Mingle Image */}
+            <Image
+                source={MingleImage}
+                style={{
+                    width: 300,
+                    height: 300,
+                    marginTop: 0,
+                    marginBottom: 30,
+                }}
+                resizeMode="contain"
             />
-            <Button title="ログイン" onPress={handleLogin} buttonStyle={color = 'black'} />
-            <Button title="Home" onPress={() => navigation.navigate('Home')} />
+
+            {/* Login Button Image with TouchableOpacity */}
+            <TouchableOpacity onPress={handleLoginBtnPress}>
+                <Image
+                    source={LoginBtnImage}
+                    style={{
+                        width: 250,
+                        height: 250,
+                        MarginTop: 100,
+
+                    }}
+                    resizeMode="contain"
+                />
+            </TouchableOpacity>
+
+            {/* Have Account Image */}
+            <Image
+                source={HaveAccountImage}
+                style={{
+                    width: 200,
+                    height: 100,
+
+                }}
+                resizeMode="contain"
+            />
         </View>
     );
 }
