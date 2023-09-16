@@ -17,22 +17,27 @@ function HomeScreen({ navigation }) {
     }, [rectangleCount]);
 
     return (
-        <ScrollView contentContainerStyle={styles.scrollContainer}>
-            {textData.map((text, index) => (
-                <View key={index} style={styles.rectangle}>
-                    <View style={styles.shadowBox}>
-                        <Text style={styles.rectangleText}>{text}</Text>
+        <View>
+            <View>
+                <Button title="Go to add" onPress={() => navigation.navigate('Add')} />
+            </View>
+            <ScrollView contentContainerStyle={styles.scrollContainer}>
+                {textData.map((text, index) => (
+                    <View key={index} style={styles.rectangle}>
+                        <View style={styles.shadowBox}>
+                            <Text style={styles.rectangleText}>{text}</Text>
+                        </View>
                     </View>
-                </View>
-            ))}
+                ))}
 
-            <Button
-                title="Change Rectangle Count"
-                onPress={() => setRectangleCount(rectangleCount + 1)}
-            />
+                <Button
+                    title="Change Rectangle Count"
+                    onPress={() => setRectangleCount(rectangleCount + 1)}
+                />
 
-            <Button title="Go to add" onPress={() => navigation.navigate('Add')} />
-        </ScrollView>
+
+            </ScrollView>
+        </View>
     );
 }
 

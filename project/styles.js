@@ -8,6 +8,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    scrollContainer: {
+        flexGrow: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
     camera: {
         width: 400,
         height: 400,
@@ -62,12 +68,7 @@ const styles = StyleSheet.create({
         elevation: 50, // 影の強さを設定
         borderRadius: 10, // 長方形の角を丸める場合に使用
     },
-    scrollContainer: {
-        flexGrow: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    }
+
 });
 
 export default styles;
