@@ -27,6 +27,13 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         overflow: 'hidden'
     },
+    textContainer: {
+        borderWidth: 1,
+        borderColor: 'lightblue',
+        width: '60%',
+        alignSelf: 'center'
+
+    },
 
     camera: {
         width: 300,
