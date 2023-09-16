@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { View, Image, } from 'react-native';
+import { View, Image, Text } from 'react-native';
 import { Button } from '@rneui/themed';
 import styles from './styles';
 import * as ImagePicker from 'expo-image-picker';
@@ -8,6 +8,7 @@ import { selectImage } from './SelectImage';
 
 function AddScreen({ navigation, route }) {
     const [selectedPhoto, setSelectedPhoto] = useState(null);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         if (route.params?.selectedPhoto) {
@@ -38,9 +39,11 @@ function AddScreen({ navigation, route }) {
                 navigation.navigate('Compatibility', { drugName: responseData })
             } else {
                 console.error('server error:', response.status, response.statusText);
+                setError('Something went wrong, try again.');
             }
         } catch (error) {
             console.error('network error:', error);
+            setError('Network error, try again.');
         }
     };
 
@@ -64,10 +67,13 @@ function AddScreen({ navigation, route }) {
             )}
             <View style={styles.buttonContainer}>
                 <Button title="Activate Camera" buttonStyle={styles.addPicture} type='outline' radius={15} onPress={() => navigation.navigate('Camera')} />
-                <Button title="Pick from Gallery" buttonStyle={styles.addPivture} type='outline' radius={15} onPress={pickImageFromGallery} />
+                <Button title="Pick from Gallery" buttonStyle={styles.addPicture} type='outline' radius={15} onPress={pickImageFromGallery} />
             </View>
             {selectedPhoto && (
                 <Button title="send to server" onPress={sendImageToServer} />
+            )}
+            {error && (
+                <Text style={styles.errorText}>{error}</Text>
             )}
 
 

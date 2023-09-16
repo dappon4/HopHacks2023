@@ -87,6 +87,11 @@ const styles = StyleSheet.create({
         elevation: 10,
         borderRadius: 10,
     },
+    errorText: {
+        alignSelf: 'center',
+        color: 'red',
+        fontSize: 20,
+    }
 
 });
 
