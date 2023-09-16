@@ -19,7 +19,7 @@ function HomeScreen({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.addButtonContainer}>
-                <Button title="Go to add" onPress={() => navigation.navigate('Add')} />
+                <Button title="+" onPress={() => navigation.navigate('Add')} />
             </View>
             <ScrollView contentContainerStyle={styles.scrollContainer}>
                 {textData.map((text, index) => (

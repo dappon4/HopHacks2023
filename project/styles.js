@@ -4,18 +4,19 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: 'white',
         alignItems: 'center',
         justifyContent: 'center',
     },
     scrollContainer: {
+        width: '100%',
         flexGrow: 1,
-        backgroundColor: '#fff',
+        backgroundColor: 'white',
         alignItems: 'center',
         justifyContent: 'center',
     },
     addButtonContainer: {
-        marginTop: 0,
+        margin: 50,
     },
     camera: {
         width: 400,
@@ -49,13 +50,12 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     rectangle: {
-        width: 200,
+        width: 400,
         height: 100,
         backgroundColor: 'white',
         justifyContent: 'center',
         alignItems: 'center',
         marginVertical: 5,
-        borderWidth: 2,
         marginVertical: 20, // 上下の余白を設定
         marginHorizontal: 20,
     },
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
         width: 210,
         height: 110,
         backgroundColor: 'white',
-        elevation: 50, // 影の強さを設定
+        elevation: 10, // 影の強さを設定
         borderRadius: 10, // 長方形の角を丸める場合に使用
     },
 
