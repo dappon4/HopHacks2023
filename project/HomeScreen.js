@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { ScrollView, View, Text } from 'react-native';
 import { Button } from 'react-native-elements';
 import styles from './styles';
 
@@ -17,8 +17,7 @@ function HomeScreen({ navigation }) {
     }, [rectangleCount]);
 
     return (
-        <View style={styles.container}>
-            {/* 長方形のテキストを表示 */}
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
             {textData.map((text, index) => (
                 <View key={index} style={styles.rectangle}>
                     <View style={styles.shadowBox}>
@@ -27,14 +26,13 @@ function HomeScreen({ navigation }) {
                 </View>
             ))}
 
-            {/* 長方形の数を変更するボタン */}
             <Button
                 title="Change Rectangle Count"
                 onPress={() => setRectangleCount(rectangleCount + 1)}
             />
 
             <Button title="Go to add" onPress={() => navigation.navigate('Add')} />
-        </View>
+        </ScrollView>
     );
 }
 

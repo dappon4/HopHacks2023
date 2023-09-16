@@ -42,7 +42,7 @@ export function selectImage({ navigation }) {
             </View>
             <Text style={{ color: '#fff' }}>Medi Mingle</Text>
             <StatusBar style="auto" />
-        </View> //you need to initialize view and then close it
+        </View>
 
 
     );

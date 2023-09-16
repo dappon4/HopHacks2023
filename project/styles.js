@@ -41,13 +41,13 @@ const styles = StyleSheet.create({
     },
     rectangle: {
         width: 200,
-        height: 50,
+        height: 100,
         backgroundColor: 'white',
         justifyContent: 'center',
         alignItems: 'center',
         marginVertical: 5,
         borderWidth: 2,
-        marginVertical: 60, // 上下の余白を設定
+        marginVertical: 20, // 上下の余白を設定
         marginHorizontal: 20,
     },
     rectangleText: {
@@ -57,11 +57,17 @@ const styles = StyleSheet.create({
     },
     shadowBox: {
         width: 210,
-        height: 100,
+        height: 110,
         backgroundColor: 'white',
         elevation: 50, // 影の強さを設定
         borderRadius: 10, // 長方形の角を丸める場合に使用
     },
+    scrollContainer: {
+        flexGrow: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
 });
 
 export default styles;
