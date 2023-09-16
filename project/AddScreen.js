@@ -10,6 +10,7 @@ import camLogo from './components/Images/camLogo.png'
 import uploadimg from './components/Images/uploadimg.png'
 import greendots from './components/Images/greendots.png'
 import orBlack from './components/Images/orBlack.png'
+import x from './components/Images/x.png'
 
 function AddScreen({ navigation, route }) {
     const [selectedPhoto, setSelectedPhoto] = useState(null);
@@ -94,7 +95,9 @@ function AddScreen({ navigation, route }) {
 
         if (!result.canceled) {
             // 選択した画像をセット
+            console.log(result)
             setSelectedPhoto(result);
+            console.log(selectedPhoto)
         }
     };
 
@@ -102,7 +105,7 @@ function AddScreen({ navigation, route }) {
         <View>
             {!selectedPhoto && (
                 <View style={styles.photoHolder}>
-                    <Image source={greendots} style={{ width: '100%', height: '100%', position: 'absolute' }} resizeMode='contain' />
+                    <Image source={greendots} style={{ width: '100%', height: '100%', position: 'absolute', zIndex: -1 }} resizeMode='contain' />
                     <View style={styles.buttonContainer}>
                         <TouchableOpacity onPress={() => navigation.navigate('Camera')}><Image source={camLogo} style={{ width: 90, height: 90, margin: 25 }} resizeMode="contain" /></TouchableOpacity>
                         <TouchableOpacity onPress={pickImageFromGallery} ><Image source={uploadimg} style={{ width: 90, height: 90, margin: 25 }} resizeMode="contain" /></TouchableOpacity>
@@ -112,6 +115,7 @@ function AddScreen({ navigation, route }) {
             {
                 selectedPhoto && (
                     <View>
+                        <TouchableOpacity onPress={() => setSelectedPhoto(null)}><Image source={x} style={{ width: 60, height: 60, position: 'absolute', right: 30, top: 70, }} resizeMode='contain' /></TouchableOpacity>
                         <Image source={{ uri: selectedPhoto.uri }} style={styles.image} />
                         <Button title="send to server" onPress={sendImageToServer} />
 
