@@ -17,6 +17,8 @@ function AddScreen({ navigation, route }) {
     const [error, setError] = useState(null);
     const [inputValue, setInputValue] = useState('');
 
+    const id = route.params.userInfo2[0]
+
     useEffect(() => {
         if (route.params?.selectedPhoto) {
             setSelectedPhoto(route.params.selectedPhoto);
@@ -40,17 +42,25 @@ function AddScreen({ navigation, route }) {
                     'Content-Type': 'multipart/form-data',
                 },
             });
+
             if (response.ok) {
                 const responseData = await response.json();
-                console.log('server response:', responseData);
-
-                navigation.navigate('Compatibility', { drugName: responseData })
+                console.log(responseData);
+                if(responseData.result !== "false") {
+                    navigation.navigate('Compatibility', { rx: [responseData.rxuid, id] })
+                } else {
+                    console.log(route.params.userInfo2[0])
+                    navigation.navigate('Home', { userInfo: [id] })
+                }
             } else {
+                console.log("h")
                 console.error('server error:', response.status, response.statusText);
+                console.log("i")
                 setError('Something went wrong, try again.');
+                console.log("j")
             }
         } catch (error) {
-            console.error('network error:', error);
+            console.error('network error1:', error);
             setError('Network error, try again.');
         }
     };
@@ -60,24 +70,28 @@ function AddScreen({ navigation, route }) {
         setError(null);
 
         try {
-            const response = await fetch(`http://159.223.136.17:5000/manual_check`, {
+            const response = await fetch(`http://159.223.136.17:5000/manual_check?drug=${drugName}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ drugName }),
             });
 
             if (response.ok) {
                 const responseData = await response.json();
-                console.log('server response:', responseData);
-                navigation.navigate('Compatibility', { drugName: responseData });
+                if(responseData.result != "false") {
+                    console.log(route.params.userInfo2[0])
+                    navigation.navigate('Compatibility', { rx: [responseData.rxuid, id]})
+                } else {
+                    console.log(route.params.userInfo2[0])
+                    navigation.navigate('Home', { userInfo : [id] })
+                }
             } else {
                 console.error('server error:', response.status, response.statusText);
                 setError('Something went wrong, try again.');
             }
         } catch (error) {
-            console.error('network error:', error);
+            console.error('network error2:', error);
             setError('Network error, try again.');
         }
     };
@@ -107,7 +121,7 @@ function AddScreen({ navigation, route }) {
                 <View style={styles.photoHolder}>
                     <Image source={greendots} style={{ width: '100%', height: '100%', position: 'absolute', zIndex: -1 }} resizeMode='contain' />
                     <View style={styles.buttonContainer}>
-                        <TouchableOpacity onPress={() => navigation.navigate('Camera')}><Image source={camLogo} style={{ width: 90, height: 90, margin: 25 }} resizeMode="contain" /></TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('Camera', {userInfoCamera : [id]})}><Image source={camLogo} style={{ width: 90, height: 90, margin: 25 }} resizeMode="contain" /></TouchableOpacity>
                         <TouchableOpacity onPress={pickImageFromGallery} ><Image source={uploadimg} style={{ width: 90, height: 90, margin: 25 }} resizeMode="contain" /></TouchableOpacity>
                     </View>
                 </View>

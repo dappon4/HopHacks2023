@@ -16,9 +16,10 @@ const customTheme = {
     },
 };
 
-function CameraScreen({ navigation }) {
+function CameraScreen({ navigation, route }) {
     const [hasPermission, setHasPermission] = useState(null);
     const cameraRef = useRef(null);
+    const id = route.params.userInfoCamera[0]
 
     useEffect(() => {
         // request camera permission
@@ -31,7 +32,7 @@ function CameraScreen({ navigation }) {
     const takePicture = async () => {
         if (cameraRef.current) {
             const photo = await cameraRef.current.takePictureAsync();
-            navigation.navigate('Add', { selectedPhoto: photo });
+            navigation.navigate('Add', { selectedPhoto: photo, userInfo2: [id]});
         }
     };
 

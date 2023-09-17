@@ -64,7 +64,7 @@ function EnterInformationScreen({ navigation, route }) {
             });
             if (response.ok) {
                 const responseData = await response.text();
-                var userId = responseData.split("-")[0]
+                var userId = parseInt(responseData.split("-")[0])
                 var nurseId = responseData.split("-")[1]
                 navigation.navigate('Home', { userInfo: [userId, nurseId] })
             } else {
@@ -72,7 +72,7 @@ function EnterInformationScreen({ navigation, route }) {
                 setError('Something went wrong, try again.');
             }
         } catch (error) {
-            console.error('network error:', error);
+            console.error('network error4:', error);
             setError('Network error, try again.');
         }
 
@@ -94,7 +94,7 @@ function EnterInformationScreen({ navigation, route }) {
                 setError('Something went wrong, try again.');
             }
         } catch (error) {
-            console.error('network error:', error);
+            console.error('network error5:', error);
             setError('Network error, try again.');
         }
 

@@ -7,7 +7,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react';
 
 
-export function selectImage({ navigation }) {
+export function selectImage({ navigation, route }) {
     const [selectedImage, setSelectedImage] = useState(null);
 
     const pickImageAsync = async () => {
@@ -19,7 +19,7 @@ export function selectImage({ navigation }) {
         if (!result.canceled) {
             console.log(result);
             setSelectedImage(result.assets[0].uri);
-            navigation.navigate('Add', { selectedPhoto: selectedImage });
+            navigation.navigate('Add', { selectedPhoto: selectedImage});
 
         } else {
             alert('You did not select any image.');

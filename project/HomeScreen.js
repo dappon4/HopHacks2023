@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ScrollView, View, Text, Image } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { Button } from '@rneui/themed';
@@ -8,6 +8,7 @@ import axios from 'axios';
 
 function HomeScreen({ navigation, route }) {
     const [drugData, setDrugData] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         getDrugInfo();
@@ -15,21 +16,28 @@ function HomeScreen({ navigation, route }) {
 
     const getDrugInfo = async () => {
         try {
-            const response = await axios.get(`http://159.223.136.17:5000/get?user=${route.params.userInfo[0]}`, {
+            setLoading(true);
+            const response = await axios.get(`http://159.223.136.17:5000/get?userid=${route.params.userInfo[0]}`, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
             });
 
-            if (response.data !== "No prescriptions found") {
+            if(response.data !== "No prescriptions found") {
                 setDrugData(response.data);
             } else {
                 setDrugData(null);
             }
         } catch (error) {
-            console.error('network error:', error);
+            console.error('network error6:', error);
             setError('Network error, try again.');
+        } finally {
+            setLoading(false);
         }
+    }
+
+    if (loading) {
+        return <Text>Loading...</Text>; // Or your loading spinner
     }
 
     return (
@@ -40,26 +48,25 @@ function HomeScreen({ navigation, route }) {
                     <Icon
                         name="add"
                         type="material"
-                        size={30}
+                        size={40}
                         color="white"
                     />
-                } onPress={() => navigation.navigate('Add')} />
+                } onPress={() => navigation.navigate('Add', { userInfo2: [route.params.userInfo[0]] })} />
             </View>
             <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
                 {drugData && drugData.map((item, index) => (
-                    <View key={index} style={styles.rectangle}>
-                        <View style={styles.shadowBox}>
-                            <Text style={styles.rectangleText}>Drug: {item.drug}</Text>
-                            <Text style={styles.rectangleText}>Description: {item.description}</Text>
-                            <Text style={styles.rectangleText}>Power: {item.power}</Text>
-                            {/* Add more fields as needed */}
-                        </View>
+                <View key={index} style={styles.rectangle}>
+                    <View style={styles.shadowBox}>
+                        <Text style={{...styles.rectangleText, textAlign: 'left'}}>Drug: {item.drug}</Text>
+                        <Text style={{...styles.rectangleText, textAlign: 'left'}}>Description: {item.description}</Text>
+                        <Text style={{...styles.rectangleText, textAlign: 'left'}}>Power: {item.power}</Text>
+                        <Text style={{...styles.rectangleText, textAlign: 'left'}}>Frequency: {item.days + ", " + item.time}</Text>
                     </View>
-                ))}
+                </View>
+            ))}
             </ScrollView>
         </View>
     );
 }
 
 export default HomeScreen;
-

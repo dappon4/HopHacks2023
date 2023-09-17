@@ -81,15 +81,16 @@ const styles = StyleSheet.create({
     },
     rectangleText: {
         color: 'black', // テキストの色
-        fontSize: 16, // テキストのフォントサイズ
-        alignSelf: 'center'
+        fontSize: 12, // テキストのフォントサイズ
+        alignSelf: 'left',
     },
     shadowBox: {
-        width: '100%',
-        height: 110,
+        width: '110%',
+        height: 100,
         backgroundColor: 'white',
         elevation: 10,
         borderRadius: 10,
+        padding: 7,
     },
     errorText: {
         alignSelf: 'center',
