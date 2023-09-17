@@ -106,78 +106,78 @@ function EnterInformationScreen({ navigation, route }) {
 
     }
 
-
-
     if (route.params.mode == "login") {
 
         return (
-            <View style={{ marginTop: 100 }}>
-                <TextInput style={styles.textContainer}
-                    placeholder="Enter username"
+            <View style={{ marginTop: 100 , flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
+                
+                <TextInput style={[styles.textinputcurved, {marginTop: 2, marginBottom: 2}]}
+                    placeholder="  Enter username"
                     onChangeText={handleUserNameChange}
 
                 />
-                <TextInput style={styles.textContainer}
-                    placeholder="Enter password"
+                <TextInput style={[styles.textinputcurved, {marginTop: 2, marginBottom: 2}]}
+                    placeholder="  Enter password"
                     onChangeText={handlePasswordChange}
 
                 />
                 <TouchableOpacity onPress={sendUserInfoLogIn}>
-                    <Image source={login} style={{ width: 100, height: 200 }} resizeMode='contain' />
+                    <Image source={login} style={{ width: 150, height: 150 }} resizeMode='contain' />
                 </TouchableOpacity>
             </View>
 
         );
+
     } else if (route.params.mode == "signup") {
         return (
-            <View style={{ marginTop: 100 }}>
-                <TextInput style={styles.textContainer}
-                    placeholder="Enter username"
+            <View style={{ marginTop: 100, alignItems: 'center', justifyContent: 'center'}}>
+                <TextInput style={[styles.textinputcurved, {marginTop: 2, marginBottom: 2}]}
+                    placeholder="  Enter username"
                     onChangeText={handleUserNameChange}
 
                 />
-                <TextInput style={styles.textContainer}
-                    placeholder="Enter password"
+                <TextInput style={[styles.textinputcurved, {marginTop: 2, marginBottom: 2}]}
+                    placeholder="  Enter password"
                     onChangeText={handlePasswordChange}
 
                 />
-                <TextInput style={styles.textContainer}
-                    placeholder="Enter first name"
+                <TextInput style={[styles.textinputcurved, {marginTop: 2, marginBottom: 2}]}
+                    placeholder="  Enter first name"
                     onChangeText={handleFirstNameChange}
 
                 />
-                <TextInput style={styles.textContainer}
-                    placeholder="Enter last name"
+                <TextInput style={[styles.textinputcurved, {marginTop: 2, marginBottom: 2}]}
+                    placeholder="  Enter last name"
                     onChangeText={handleLastNameChange}
 
                 />
-                <TextInput style={styles.textContainer}
-                    placeholder="Enter height"
+                <TextInput style={[styles.textinputcurved, {marginTop: 2, marginBottom: 2}]}
+                    placeholder="  Enter height"
                     onChangeText={handleHeightChange}
 
                 />
-                <TextInput style={styles.textContainer}
-                    placeholder="Enter weight"
+                <TextInput style={[styles.textinputcurved, {marginTop: 2, marginBottom: 2}]}
+                    placeholder="  Enter weight"
                     onChangeText={handleWeightChange}
 
                 />
-                <TextInput style={styles.textContainer}
-                    placeholder="Enter date of birth"
+                <TextInput style={[styles.textinputcurved, {marginTop: 2, marginBottom: 2}]}
+                    placeholder="  Enter date of birth"
                     onChangeText={handleDateOfBirthChange}
 
                 />
-                <TextInput style={styles.textContainer}
-                    placeholder="Enter nurse id"
+                <TextInput style={[styles.textinputcurved, {marginTop: 2, marginBottom: 2}]}
+                    placeholder="  Enter nurse id"
                     onChangeText={handleNurseIdChange}
 
                 />
-                <TextInput style={styles.textContainer}
-                    placeholder="Enter doctor id"
+                <TextInput style={[styles.textinputcurved, {marginTop: 2, marginBottom: 2}]}
+                    placeholder="  Enter doctor id"
                     onChangeText={handleDoctorIdChange}
 
                 />
                 <TouchableOpacity onPress={sendUserInfoSignUp}>
-                    <Image source={login} style={{ width: 100, height: 200 }} resizeMode='contain' />
+                    <Image source={login} style={{ width: 150, height: 150 }} resizeMode='contain' />
                 </TouchableOpacity>
             </View>
         );

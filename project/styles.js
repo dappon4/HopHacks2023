@@ -103,7 +103,16 @@ const styles = StyleSheet.create({
         width: 300,
         borderColor: 'lightblue',
         alignSelf: 'center'
-    }
+    },
+
+    textinputcurved: {
+        height: 50,
+        borderColor: 'gray',
+        borderWidth: 4,
+        borderRadius: 6,
+        width: '80%',
+        alignSelf: 'center'
+    },
 
 });
 
