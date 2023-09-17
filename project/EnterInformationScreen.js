@@ -56,8 +56,6 @@ function EnterInformationScreen({ navigation, route }) {
 
     const sendUserInfoLogIn = async () => {
         try {
-            console.log(inputUserName)
-            console.log(inputPassword)
             const response = await fetch(`http://159.223.136.17:5000/login?name=${inputUserName}&password=${inputPassword}`, {
                 method: 'POST',
                 headers: {
@@ -66,7 +64,6 @@ function EnterInformationScreen({ navigation, route }) {
             });
             if (response.ok) {
                 const responseData = await response.text();
-                console.log('server response:', responseData);
                 var userId = responseData.split("-")[0]
                 var nurseId = responseData.split("-")[1]
                 navigation.navigate('Home', { userInfo: [userId, nurseId] })
