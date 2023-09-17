@@ -21,7 +21,7 @@ function HomeScreen({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.addButtonContainer}>
-                <Image source={logo} style={{ height: 100 }} resizeMode='contain' />
+                <Image source={logo} style={{ height: 100, marginTop: 50 }} resizeMode='contain' />
                 <Button radius={15} icon={
                     <Icon
                         name="add"
