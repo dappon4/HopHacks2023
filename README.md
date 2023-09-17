@@ -1,4 +1,4 @@
-# HopHacks2023
+# hophacks-2023 - Medi Mingle
 
 This is the frontend, Please visit the backend (if you want to)
 https://github.com/NishkalHundia/hophacks-2023
