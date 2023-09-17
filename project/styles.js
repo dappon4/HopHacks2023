@@ -80,9 +80,8 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
     },
     rectangleText: {
-        color: 'black', // テキストの色
-        fontSize: 12, // テキストのフォントサイズ
-        alignSelf: 'left',
+        color: 'black',
+        fontSize: 12,
     },
     shadowBox: {
         width: '110%',

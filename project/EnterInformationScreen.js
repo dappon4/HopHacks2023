@@ -62,20 +62,25 @@ function EnterInformationScreen({ navigation, route }) {
                     'Content-Type': 'multipart/form-data',
                 },
             });
+            const responseData = await response.json();
             if (response.ok) {
-                const responseData = await response.text();
-                var userId = parseInt(responseData.split("-")[0])
-                var nurseId = responseData.split("-")[1]
-                navigation.navigate('Home', { userInfo: [userId, nurseId] })
+                if (responseData.result === "true") {
+                    var userId = responseData.userid;
+                    var nurseId = responseData.nurseid;
+                    navigation.navigate('Home', { userInfo: [userId, nurseId] });
+                } else if (responseData.result === "Incorrect password") {
+                    setError('Incorrect password, try again.');
+                } else if (responseData.result === "User does not exist") {
+                    setError('User does not exist, try again.');
+                }
             } else {
                 console.error('server error:', response.status, response.statusText);
                 setError('Something went wrong, try again.');
             }
         } catch (error) {
-            console.error('network error4:', error);
+            console.error('network error:', error);
             setError('Network error, try again.');
         }
-
     }
 
     const sendUserInfoSignUp = async () => {

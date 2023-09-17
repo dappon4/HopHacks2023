@@ -46,7 +46,7 @@ function AddScreen({ navigation, route }) {
             if (response.ok) {
                 const responseData = await response.json();
                 if(responseData.result !== "false") {
-                    navigation.navigate('Compatibility', { rx: [responseData.rxuid, id] })
+                    navigation.navigate('Compatibility', { rx: [responseData.rxuid, id, responseData.result] })
                 } else {
                     navigation.navigate('Home', { userInfo: [id] })
                 }
@@ -75,7 +75,7 @@ function AddScreen({ navigation, route }) {
             if (response.ok) {
                 const responseData = await response.json();
                 if(responseData.result != "false") {
-                    navigation.navigate('Compatibility', { rx: [responseData.rxuid, id]})
+                    navigation.navigate('Compatibility', { rx: [responseData.rxuid, id, drugName]})
                 } else {
                     navigation.navigate('Home', { userInfo : [id] })
                 }
