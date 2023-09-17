@@ -7,8 +7,6 @@ import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react';
 
 
-
-
 export function selectImage({ navigation }) {
     const [selectedImage, setSelectedImage] = useState(null);
 

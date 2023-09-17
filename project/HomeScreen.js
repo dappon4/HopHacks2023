@@ -7,16 +7,17 @@ import logo from './components/Images/logo.png'
 
 function HomeScreen({ navigation, route }) {
     const [textData, setTextData] = useState([]);
-    const [userInfo, setUserInfo] = useState(null)
+    const [userId, setUserId] = useState(null);
+    const [nurseId, setNurseId] = useState(null);
     const [rectangleCount, setRectangleCount] = useState(3); // 長方形の数を設定
+    const [drugData, setDrugData] = useState(null);
 
     useEffect(() => {
         if (route.params?.userInfo) {
-            setUserInfo(route.params.userInfo);
+            setUserId(route.params.userInfo[0])
+            setNurseId(route.params.userInfo[1])
         }
     }, [route.params])
-
-    console.log(userInfo);
 
     // 長方形のテキストデータを生成
     useEffect(() => {
@@ -26,6 +27,35 @@ function HomeScreen({ navigation, route }) {
         }
         setTextData(data);
     }, [rectangleCount]);
+
+    const getDrugInfo = async () => {
+        try {
+            const response = await fetch(`http://159.223.136.17:5000/get?user=${userId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                const responseData = await response.json();
+                console.log('server response:', responseData);
+                setDrugData(responseData);
+            } else {
+                console.error('server error:', response.status, response.statusText);
+                setError('Something went wrong, try again.');
+            }
+        } catch (error) {
+            console.error('network error:', error);
+            setError('Network error, try again.');
+        }
+    }
+
+    useEffect(() => {
+        getDrugInfo;
+    });
+
+    console.log(drugData);
 
     return (
         <View style={styles.container}>

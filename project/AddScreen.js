@@ -63,7 +63,7 @@ function AddScreen({ navigation, route }) {
             const response = await fetch(`http://159.223.136.17:5000/manual_check`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json', // リクエストのヘッダーでJSONを指定
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ drugName }),
             });

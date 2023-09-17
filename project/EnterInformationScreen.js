@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useId, useState } from 'react';
 import { StyleSheet, View, Image, TouchableOpacity, TextInput } from 'react-native';
 import styles from './styles';
 import { useNavigation } from '@react-navigation/native';
@@ -69,7 +69,7 @@ function EnterInformationScreen({ navigation, route }) {
                 console.log('server response:', responseData);
                 userId = responseData.split("-")[0]
                 nurseId = responseData.split("-")[1]
-                navigation.navigate('Home', { userInfo: responseData })
+                navigation.navigate('Home', { userInfo: [userId, nurseId] })
             } else {
                 console.error('server error:', response.status, response.statusText);
                 setError('Something went wrong, try again.');
