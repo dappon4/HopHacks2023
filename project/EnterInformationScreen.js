@@ -1,5 +1,5 @@
 import React, { useEffect, useId, useState } from 'react';
-import { StyleSheet, View, Image, TouchableOpacity, TextInput } from 'react-native';
+import { StyleSheet, View, Image, TouchableOpacity, TextInput, Button, Text } from 'react-native';
 import styles from './styles';
 import { useNavigation } from '@react-navigation/native';
 import MediMinglelogo from './components/Images/MediMinglelogo.png';
@@ -108,20 +108,20 @@ function EnterInformationScreen({ navigation, route }) {
     if (route.params.mode == "login") {
 
         return (
-            <View style={{ marginTop: 100 , flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-                
-                <TextInput style={[styles.textinputcurved, {marginTop: 2, marginBottom: 2}]}
+            <View style={{ marginTop: 100, flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+
+                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2 }]}
                     placeholder="  Enter username"
                     onChangeText={handleUserNameChange}
 
                 />
-                <TextInput style={[styles.textinputcurved, {marginTop: 2, marginBottom: 2}]}
+                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2 }]}
                     placeholder="  Enter password"
                     onChangeText={handlePasswordChange}
 
                 />
                 <TouchableOpacity onPress={sendUserInfoLogIn}>
-                    <Image source={login} style={{ width: 150, height: 150 }} resizeMode='contain' />
+                    <Text style={{ backgroundColor: 'lightgreen', height: 60, width: 150, fontSize: 30, textAlign: 'center', textAlignVertical: 'center', borderRadius: 5, margin: 40 }}>Log In</Text>
                 </TouchableOpacity>
             </View>
 
@@ -129,54 +129,54 @@ function EnterInformationScreen({ navigation, route }) {
 
     } else if (route.params.mode == "signup") {
         return (
-            <View style={{ marginTop: 100, alignItems: 'center', justifyContent: 'center'}}>
-                <TextInput style={[styles.textinputcurved, {marginTop: 2, marginBottom: 2}]}
+            <View style={{ marginTop: 100, alignItems: 'center', justifyContent: 'center' }}>
+                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2 }]}
                     placeholder="  Enter username"
                     onChangeText={handleUserNameChange}
 
                 />
-                <TextInput style={[styles.textinputcurved, {marginTop: 2, marginBottom: 2}]}
+                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2 }]}
                     placeholder="  Enter password"
                     onChangeText={handlePasswordChange}
 
                 />
-                <TextInput style={[styles.textinputcurved, {marginTop: 2, marginBottom: 2}]}
+                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2 }]}
                     placeholder="  Enter first name"
                     onChangeText={handleFirstNameChange}
 
                 />
-                <TextInput style={[styles.textinputcurved, {marginTop: 2, marginBottom: 2}]}
+                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2 }]}
                     placeholder="  Enter last name"
                     onChangeText={handleLastNameChange}
 
                 />
-                <TextInput style={[styles.textinputcurved, {marginTop: 2, marginBottom: 2}]}
+                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2 }]}
                     placeholder="  Enter height"
                     onChangeText={handleHeightChange}
 
                 />
-                <TextInput style={[styles.textinputcurved, {marginTop: 2, marginBottom: 2}]}
+                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2 }]}
                     placeholder="  Enter weight"
                     onChangeText={handleWeightChange}
 
                 />
-                <TextInput style={[styles.textinputcurved, {marginTop: 2, marginBottom: 2}]}
+                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2 }]}
                     placeholder="  Enter date of birth"
                     onChangeText={handleDateOfBirthChange}
 
                 />
-                <TextInput style={[styles.textinputcurved, {marginTop: 2, marginBottom: 2}]}
+                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2 }]}
                     placeholder="  Enter nurse id"
                     onChangeText={handleNurseIdChange}
 
                 />
-                <TextInput style={[styles.textinputcurved, {marginTop: 2, marginBottom: 2}]}
+                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2 }]}
                     placeholder="  Enter doctor id"
                     onChangeText={handleDoctorIdChange}
 
                 />
                 <TouchableOpacity onPress={sendUserInfoSignUp}>
-                    <Image source={login} style={{ width: 150, height: 150 }} resizeMode='contain' />
+                    <Text style={{ backgroundColor: 'lightgreen', height: 60, width: 150, fontSize: 30, textAlign: 'center', textAlignVertical: 'center', borderRadius: 5, margin: 40 }}>Sign Up</Text>
                 </TouchableOpacity>
             </View>
         );

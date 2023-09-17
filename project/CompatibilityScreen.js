@@ -77,8 +77,10 @@ function CompatibilityScreen({ navigation, route }) {
         <View style={styles.container}>
             {responseData && responseData.map((data, index) => (
                 <View key={index}>
-                    <Text style={styles.compatibilityText}>{data.Interaction}</Text>
-                    <Text style={styles.compatibilityText}>{data.Risk}</Text>
+                    <Text style={styles.compatibilityText}>Name: {data.Name}</Text>
+                    <Text style={styles.compatibilityText}>Description: {data.Interaction}</Text>
+                    <Text style={styles.compatibilityText}>Severity: {data.Risk}</Text>
+                    <View style={{height: 1, backgroundColor: 'grey'}} />
                 </View>
             ))}
             <View style={{ flexDirection: 'row' }}>
