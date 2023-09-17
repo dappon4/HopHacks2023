@@ -3,7 +3,8 @@ import { ScrollView, View, Text, Image } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { Button } from '@rneui/themed';
 import styles from './styles';
-import logo from './components/Images/logo.png'
+import logo from './components/Images/logo.png';
+import axios from 'axios';
 
 function HomeScreen({ navigation, route }) {
     const [textData, setTextData] = useState([]);
@@ -14,6 +15,7 @@ function HomeScreen({ navigation, route }) {
 
     useEffect(() => {
         if (route.params?.userInfo) {
+            console.log("dapple")
             setUserId(route.params.userInfo[0])
             setNurseId(route.params.userInfo[1])
         }
@@ -28,19 +30,22 @@ function HomeScreen({ navigation, route }) {
         setTextData(data);
     }, [rectangleCount]);
 
+    useEffect(() => {
+        getDrugInfo();
+    }, [])
+
     const getDrugInfo = async () => {
         try {
-            const response = await fetch(`http://159.223.136.17:5000/get?user=${userId}`, {
-                method: 'GET',
+            const response = await axios.get(`http://159.223.136.17:5000/get?user=${userId}`, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
             });
 
-            if (response.ok) {
-                const responseData = await response.json();
+            if (response.status === 200) {
+                const responseData = response.data;
                 console.log('server response:', responseData);
-                setDrugData(responseData);
+                setDrugData(responseData); // データを状態に設定
             } else {
                 console.error('server error:', response.status, response.statusText);
                 setError('Something went wrong, try again.');
@@ -50,10 +55,6 @@ function HomeScreen({ navigation, route }) {
             setError('Network error, try again.');
         }
     }
-
-    useEffect(() => {
-        getDrugInfo;
-    });
 
     console.log(drugData);
 
