@@ -75,7 +75,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         justifyContent: 'center',
         alignItems: 'center',
-        marginVertical: 5,
         marginVertical: 20, // 上下の余白を設定
         marginHorizontal: 20,
     },
@@ -84,7 +83,7 @@ const styles = StyleSheet.create({
         fontSize: 12,
     },
     shadowBox: {
-        width: '110%',
+        width: '100%',
         height: 100,
         backgroundColor: 'white',
         elevation: 10,
@@ -98,7 +97,6 @@ const styles = StyleSheet.create({
     },
     photoHolder: {
         margin: 10,
-        marginTop: 100,
         height: 300,
         width: 300,
         borderColor: 'lightblue',
@@ -113,7 +111,17 @@ const styles = StyleSheet.create({
         width: '80%',
         alignSelf: 'center'
     },
-
+    compatibilityText: {
+        fontSize: 20,
+        alignSelf: 'center',
+        textAlign: 'center',
+        margin: 10,
+    },
+    compatibilityTextBox: {
+        borderBottomColor: 'grey',
+        borderBottomWidth: 1,
+        width: '100%'
+    }
 });
 
 export default styles;

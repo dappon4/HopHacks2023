@@ -5,6 +5,7 @@ import { Button } from '@rneui/themed';
 import styles from './styles';
 import * as ImagePicker from 'expo-image-picker';
 import { selectImage } from './SelectImage';
+import { Icon } from 'react-native-elements';
 
 import camLogo from './components/Images/camLogo.png'
 import uploadimg from './components/Images/uploadimg.png'
@@ -45,7 +46,7 @@ function AddScreen({ navigation, route }) {
 
             if (response.ok) {
                 const responseData = await response.json();
-                if(responseData.result !== "false") {
+                if (responseData.result !== "false") {
                     navigation.navigate('Compatibility', { rx: [responseData.rxuid, id, responseData.result] })
                 } else {
                     navigation.navigate('Home', { userInfo: [id] })
@@ -74,10 +75,10 @@ function AddScreen({ navigation, route }) {
 
             if (response.ok) {
                 const responseData = await response.json();
-                if(responseData.result != "false") {
-                    navigation.navigate('Compatibility', { rx: [responseData.rxuid, id, drugName]})
+                if (responseData.result != "false") {
+                    navigation.navigate('Compatibility', { rx: [responseData.rxuid, id, drugName] })
                 } else {
-                    navigation.navigate('Home', { userInfo : [id] })
+                    navigation.navigate('Home', { userInfo: [id] })
                 }
             } else {
                 console.error('server error:', response.status, response.statusText);
@@ -107,45 +108,56 @@ function AddScreen({ navigation, route }) {
 
     return (
         <View>
-            {!selectedPhoto && (
-                <View style={styles.photoHolder}>
-                    <Image source={greendots} style={{ width: '100%', height: '100%', position: 'absolute', zIndex: -1 }} resizeMode='contain' />
-                    <View style={styles.buttonContainer}>
-                        <TouchableOpacity onPress={() => navigation.navigate('Camera', {userInfoCamera : [id]})}><Image source={camLogo} style={{ width: 90, height: 90, margin: 25 }} resizeMode="contain" /></TouchableOpacity>
-                        <TouchableOpacity onPress={pickImageFromGallery} ><Image source={uploadimg} style={{ width: 90, height: 90, margin: 25 }} resizeMode="contain" /></TouchableOpacity>
-                    </View>
-                </View>
-            )}
-            {
-                selectedPhoto && (
-                    <View>
-                        <TouchableOpacity onPress={() => setSelectedPhoto(null)}><Image source={x} style={{ width: 60, height: 60, position: 'absolute', right: 30, top: 70, }} resizeMode='contain' /></TouchableOpacity>
-                        <Image source={{ uri: selectedPhoto.uri }} style={styles.image} />
-                        <Button title="send to server" onPress={sendImageToServer} />
-
-                    </View>
-                )
-            }
-
-            {
-                error && (
-                    <Text style={styles.errorText}>{error}</Text>
-                )
-            }
-            <Image source={orBlack} style={{ width: 100, height: 100, alignSelf: 'center' }} resizeMode='contain' />
+            <View style={{ height: 50, alignItems: 'flex-start', marginTop: 50 }}>
+                <TouchableOpacity onPress={() => navigation.navigate('Home', { userInfo: route.params.userInfo2 })}>
+                    <Icon
+                        name="arrow-back"
+                        type="material"
+                        color="black"
+                        size={50} />
+                </TouchableOpacity>
+            </View>
             <View>
-                <TextInput style={styles.textContainer}
+                {!selectedPhoto && (
+                    <View style={styles.photoHolder}>
+                        <Image source={greendots} style={{ width: '100%', height: '100%', position: 'absolute', zIndex: -1 }} resizeMode='contain' />
+                        <View style={styles.buttonContainer}>
+                            <TouchableOpacity onPress={() => navigation.navigate('Camera', { userInfoCamera: [id] })}><Image source={camLogo} style={{ width: 90, height: 90, margin: 25 }} resizeMode="contain" /></TouchableOpacity>
+                            <TouchableOpacity onPress={pickImageFromGallery} ><Image source={uploadimg} style={{ width: 90, height: 90, margin: 25 }} resizeMode="contain" /></TouchableOpacity>
+                        </View>
+                    </View>
+                )}
+                {
+                    selectedPhoto && (
+                        <View>
+                            <TouchableOpacity onPress={() => setSelectedPhoto(null)}><Image source={x} style={{ width: 60, height: 60, position: 'absolute', right: 30, top: 70, }} resizeMode='contain' /></TouchableOpacity>
+                            <Image source={{ uri: selectedPhoto.uri }} style={styles.image} />
+                            <Button title="send to server" onPress={sendImageToServer} />
+
+                        </View>
+                    )
+                }
+
+                {
+                    error && (
+                        <Text style={styles.errorText}>{error}</Text>
+                    )
+                }
+                <Image source={orBlack} style={{ width: 100, height: 100, alignSelf: 'center' }} resizeMode='contain' />
+
+                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2, marginLeft: 10 }]}
                     placeholder="Enter drug name"
                     onChangeText={handleInputChange} // 入力値の変更を検知して関数を呼び出す
                     value={inputValue} // 入力値を状態に紐付ける
                 />
-                <Button title="OK" style={{ width: '30%' }} onPress={sendTextToServer} />
+                <View style={{ width: 60, alignSelf: 'center', marginTop: 50 }}>
+                    <Button title="OK" style={{ width: '30%' }} onPress={sendTextToServer} />
+                </View>
 
-            </View>
 
-
-            <StatusBar style="auto" />
-        </View >
+                <StatusBar style="auto" />
+            </View >
+        </View>
     );
 }
 

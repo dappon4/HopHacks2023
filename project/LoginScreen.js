@@ -55,12 +55,10 @@ function LoginScreen() {
                             width: 150,
                             height: 150,
 
-
                         }}
                         resizeMode="contain"
                     />
                 </TouchableOpacity>
-
                 {/* Have Account Image */}
                 <TouchableOpacity onPress={handleSignUp}>
                     <Image
@@ -68,7 +66,7 @@ function LoginScreen() {
                         style={{
                             width: 150,
                             height: 150,
-                            marginTop: -50
+                            marginTop: -60
 
                         }}
                         resizeMode="contain"

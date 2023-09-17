@@ -48,16 +48,16 @@ function CompatibilityScreen({ navigation, route }) {
 
             if (response.ok) {
                 const responseData = await response.json();
-                navigation.navigate('Home', { userInfo : [route.params.rx[1]] })
+                navigation.navigate('Home', { userInfo: [route.params.rx[1]] })
             } else {
                 console.error('server error:', response.status, response.statusText);
                 setError('Something went wrong, try again.');
-                navigation.navigate('Home', { userInfo : [route.params.rx[1]] })
+                navigation.navigate('Home', { userInfo: [route.params.rx[1]] })
             }
         } catch (error) {
             console.error('network error4:', error);
             setError('Network error, try again.');
-            navigation.navigate('Home', { userInfo : [route.params.rx[1]] })
+            navigation.navigate('Home', { userInfo: [route.params.rx[1]] })
         }
     }
 
@@ -70,47 +70,66 @@ function CompatibilityScreen({ navigation, route }) {
     }
 
     const handleNoClick = () => {
-        navigation.navigate('Home', { userInfo : [route.params.rx[1]] })
+        navigation.navigate('Home', { userInfo: [route.params.rx[1]] })
     }
 
     return (
         <View style={styles.container}>
             {responseData && responseData.map((data, index) => (
                 <View key={index}>
-                    <Text>{data.Interaction}</Text>
-                    <Text>{data.Risk}</Text>
+                    <Text style={styles.compatibilityText}>{data.Interaction}</Text>
+                    <Text style={styles.compatibilityText}>{data.Risk}</Text>
                 </View>
             ))}
-            <Button title="Yes" onPress={handleYesClick} />
-            <Button title="No" onPress={handleNoClick} />
+            <View style={{ flexDirection: 'row' }}>
+                <Button title="No" style={{ size: "medium" }} onPress={handleNoClick} />
+                <Button title="Yes" style={styles.compatibilityButton} onPress={handleYesClick} />
+            </View>
+
+
             {showForm && (
-                <View>
-                    <TextInput
-                        placeholder="Description"
-                        value={description}
-                        onChangeText={setDescription}
-                    />
-                    <TextInput
-                        placeholder="Power"
-                        value={power}
-                        onChangeText={setPower}
-                    />
-                    <TextInput
-                        placeholder="Days"
-                        value={days}
-                        onChangeText={setDays}
-                    />
-                    <TextInput
-                        placeholder="Time"
-                        value={time}
-                        onChangeText={setTime}
-                    />
-                    <TextInput
-                        placeholder="Expiry"
-                        value={expiry}
-                        onChangeText={setExpiry}
-                    />
-                    <Button title="Submit" onPress={() => {
+                <View style={{ marginTop: 30, width: '60%', overflow: 'hidden' }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
+                        <Text>Description: </Text>
+                        <TextInput
+                            style={styles.compatibilityTextBox}
+                            value={description}
+                            onChangeText={setDescription}
+                        />
+                    </View>
+                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                        <Text>Power: </Text>
+                        <TextInput
+                            style={styles.compatibilityTextBox}
+                            value={power}
+                            onChangeText={setPower}
+                        />
+                    </View>
+                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                        <Text>Days: </Text>
+                        <TextInput
+                            style={styles.compatibilityTextBox}
+                            value={days}
+                            onChangeText={setDays}
+                        />
+                    </View>
+                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                        <Text>Time: </Text>
+                        <TextInput
+                            style={styles.compatibilityTextBox}
+                            value={time}
+                            onChangeText={setTime}
+                        />
+                    </View>
+                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                        <Text>Expiry: </Text>
+                        <TextInput
+                            style={styles.compatibilityTextBox}
+                            value={expiry}
+                            onChangeText={setExpiry}
+                        />
+                    </View>
+                    <Button title="Submit" style={{ marginTop: 40 }} onPress={() => {
                         add();
                     }} />
                 </View>
