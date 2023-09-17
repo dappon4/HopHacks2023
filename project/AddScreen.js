@@ -45,19 +45,14 @@ function AddScreen({ navigation, route }) {
 
             if (response.ok) {
                 const responseData = await response.json();
-                console.log(responseData);
                 if(responseData.result !== "false") {
                     navigation.navigate('Compatibility', { rx: [responseData.rxuid, id] })
                 } else {
-                    console.log(route.params.userInfo2[0])
                     navigation.navigate('Home', { userInfo: [id] })
                 }
             } else {
-                console.log("h")
                 console.error('server error:', response.status, response.statusText);
-                console.log("i")
                 setError('Something went wrong, try again.');
-                console.log("j")
             }
         } catch (error) {
             console.error('network error1:', error);
@@ -80,10 +75,8 @@ function AddScreen({ navigation, route }) {
             if (response.ok) {
                 const responseData = await response.json();
                 if(responseData.result != "false") {
-                    console.log(route.params.userInfo2[0])
                     navigation.navigate('Compatibility', { rx: [responseData.rxuid, id]})
                 } else {
-                    console.log(route.params.userInfo2[0])
                     navigation.navigate('Home', { userInfo : [id] })
                 }
             } else {
@@ -108,10 +101,7 @@ function AddScreen({ navigation, route }) {
         });
 
         if (!result.canceled) {
-            // 選択した画像をセット
-            console.log(result)
             setSelectedPhoto(result);
-            console.log(selectedPhoto)
         }
     };
 

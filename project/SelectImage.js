@@ -17,7 +17,6 @@ export function selectImage({ navigation, route }) {
         });
 
         if (!result.canceled) {
-            console.log(result);
             setSelectedImage(result.assets[0].uri);
             navigation.navigate('Add', { selectedPhoto: selectedImage});
 

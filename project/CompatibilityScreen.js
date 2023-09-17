@@ -7,9 +7,6 @@ import * as ImagePicker from 'expo-image-picker';
 import { selectImage } from './SelectImage';
 
 function CompatibilityScreen({ navigation, route }) {
-
-    console.log(route.params.rx[1])
-    console.log(route.params.rx[0])
     
     const getCompatibility = async () => {
         try {
