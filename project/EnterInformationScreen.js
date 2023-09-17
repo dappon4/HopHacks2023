@@ -67,8 +67,8 @@ function EnterInformationScreen({ navigation, route }) {
             if (response.ok) {
                 const responseData = await response.text();
                 console.log('server response:', responseData);
-                userId = responseData.split("-")[0]
-                nurseId = responseData.split("-")[1]
+                var userId = responseData.split("-")[0]
+                var nurseId = responseData.split("-")[1]
                 navigation.navigate('Home', { userInfo: [userId, nurseId] })
             } else {
                 console.error('server error:', response.status, response.statusText);
