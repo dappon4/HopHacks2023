@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import styles from './styles';
 import { useNavigation } from '@react-navigation/native';
@@ -12,9 +12,14 @@ import signUp from './components/Images/signUp.png';
 function LoginScreen() {
     const navigation = useNavigation();
 
-    const handleLoginBtnPress = () => {
-        navigation.navigate('Home');
+
+    const handleLogin = () => {
+        navigation.navigate('Info', { mode: "login" });
     };
+
+    const handleSignUp = () => {
+        navigation.navigate("Info", { mode: "signup" })
+    }
 
     return (
         <View style={{ alignItems: 'center' }}>
@@ -43,7 +48,7 @@ function LoginScreen() {
             />
             <View>
                 {/* Login Button Image with TouchableOpacity */}
-                <TouchableOpacity onPress={handleLoginBtnPress}>
+                <TouchableOpacity onPress={handleLogin}>
                     <Image
                         source={login}
                         style={{
@@ -57,16 +62,18 @@ function LoginScreen() {
                 </TouchableOpacity>
 
                 {/* Have Account Image */}
-                <Image
-                    source={signUp}
-                    style={{
-                        width: 150,
-                        height: 150,
-                        marginTop: -50
+                <TouchableOpacity onPress={handleSignUp}>
+                    <Image
+                        source={signUp}
+                        style={{
+                            width: 150,
+                            height: 150,
+                            marginTop: -50
 
-                    }}
-                    resizeMode="contain"
-                />
+                        }}
+                        resizeMode="contain"
+                    />
+                </TouchableOpacity>
             </View>
         </View>
     );
