@@ -58,7 +58,7 @@ function EnterInformationScreen({ navigation, route }) {
         try {
             console.log(inputUserName)
             console.log(inputPassword)
-            const response = await fetch(`http://159.223.136.17:5000/register?name=${inputUserName}&password=${inputPassword}`, {
+            const response = await fetch(`http://159.223.136.17:5000/login?name=${inputUserName}&password=${inputPassword}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'multipart/form-data',
@@ -83,7 +83,7 @@ function EnterInformationScreen({ navigation, route }) {
         try {
             console.log(inputUserName)
             console.log(inputPassword)
-            const response = await fetch(`http://159.223.136.17:5000/login?name=${inputUserName}&password=${inputPassword}&first_name=${inputFirstName}&last_name=${inputLastName}&height=${inputHeight}&weight=${inputWeight}&date_of_birth=${inputDateOfBirth}&nurse_id=${inputNurseId}&doctor_id=${inputDoctorId}`, {
+            const response = await fetch(`http://159.223.136.17:5000/register?name=${inputUserName}&password=${inputPassword}&first_name=${inputFirstName}&last_name=${inputLastName}&height=${inputHeight}&weight=${inputWeight}&date_of_birth=${inputDateOfBirth}&nurse_id=${inputNurseId}&doctor_id=${inputDoctorId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'multipart/form-data',
