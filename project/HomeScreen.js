@@ -13,9 +13,10 @@ function HomeScreen({ navigation, route }) {
     useEffect(() => {
         if (route.params?.userInfo) {
             setUserInfo(route.params.userInfo);
-            console.log(userInfo);
         }
     }, [route.params])
+
+    console.log(userInfo);
 
     // 長方形のテキストデータを生成
     useEffect(() => {
