@@ -8,18 +8,8 @@ import axios from 'axios';
 
 function HomeScreen({ navigation, route }) {
     const [textData, setTextData] = useState([]);
-    const [userId, setUserId] = useState(null);
-    const [nurseId, setNurseId] = useState(null);
     const [rectangleCount, setRectangleCount] = useState(3); // 長方形の数を設定
     const [drugData, setDrugData] = useState(null);
-
-    useEffect(() => {
-        if (route.params?.userInfo) {
-            console.log("dapple")
-            setUserId(route.params.userInfo[0])
-            setNurseId(route.params.userInfo[1])
-        }
-    }, [route.params])
 
     // 長方形のテキストデータを生成
     useEffect(() => {
@@ -36,7 +26,7 @@ function HomeScreen({ navigation, route }) {
 
     const getDrugInfo = async () => {
         try {
-            const response = await axios.get(`http://159.223.136.17:5000/get?user=${userId}`, {
+            const response = await axios.get(`http://159.223.136.17:5000/get?user=${route.params.userInfo[0]}`, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -44,8 +34,7 @@ function HomeScreen({ navigation, route }) {
 
             if (response.status === 200) {
                 const responseData = response.data;
-                console.log('server response:', responseData);
-                setDrugData(responseData); // データを状態に設定
+                setDrugData(responseData);
             } else {
                 console.error('server error:', response.status, response.statusText);
                 setError('Something went wrong, try again.');
@@ -55,8 +44,6 @@ function HomeScreen({ navigation, route }) {
             setError('Network error, try again.');
         }
     }
-
-    console.log(drugData);
 
     return (
         <View style={styles.container}>
