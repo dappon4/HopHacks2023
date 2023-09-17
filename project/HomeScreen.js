@@ -5,8 +5,9 @@ import { Button } from '@rneui/themed';
 import styles from './styles';
 import logo from './components/Images/logo.png'
 
-function HomeScreen({ navigation }) {
+function HomeScreen({ navigation, route }) {
     const [textData, setTextData] = useState([]);
+    const [userInfo, setUserInfo] = useState(null)
     const [rectangleCount, setRectangleCount] = useState(3); // 長方形の数を設定
 
     // 長方形のテキストデータを生成
@@ -17,6 +18,13 @@ function HomeScreen({ navigation }) {
         }
         setTextData(data);
     }, [rectangleCount]);
+
+    useEffect(() => {
+        if (route.params?.userInfo) {
+            setUserInfo(route.params.userInfo);
+            console.log(userInfo);
+        }
+    }, [route.params])
 
     return (
         <View style={styles.container}>
