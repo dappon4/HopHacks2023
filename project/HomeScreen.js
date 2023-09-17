@@ -7,18 +7,7 @@ import logo from './components/Images/logo.png';
 import axios from 'axios';
 
 function HomeScreen({ navigation, route }) {
-    const [textData, setTextData] = useState([]);
-    const [rectangleCount, setRectangleCount] = useState(3); // 長方形の数を設定
     const [drugData, setDrugData] = useState(null);
-
-    // 長方形のテキストデータを生成
-    useEffect(() => {
-        const data = [];
-        for (let i = 0; i < rectangleCount; i++) {
-            data.push(`Rectangle ${i + 1}`);
-        }
-        setTextData(data);
-    }, [rectangleCount]);
 
     useEffect(() => {
         getDrugInfo();
@@ -32,12 +21,10 @@ function HomeScreen({ navigation, route }) {
                 },
             });
 
-            if (response.status === 200) {
-                const responseData = response.data;
-                setDrugData(responseData);
+            if (response.data !== "No prescriptions found") {
+                setDrugData(response.data);
             } else {
-                console.error('server error:', response.status, response.statusText);
-                setError('Something went wrong, try again.');
+                setDrugData(null);
             }
         } catch (error) {
             console.error('network error:', error);
@@ -59,21 +46,20 @@ function HomeScreen({ navigation, route }) {
                 } onPress={() => navigation.navigate('Add')} />
             </View>
             <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
-                {textData.map((text, index) => (
+                {drugData && drugData.map((item, index) => (
                     <View key={index} style={styles.rectangle}>
                         <View style={styles.shadowBox}>
-                            <Text style={styles.rectangleText}>{text}</Text>
+                            <Text style={styles.rectangleText}>Drug: {item.drug}</Text>
+                            <Text style={styles.rectangleText}>Description: {item.description}</Text>
+                            <Text style={styles.rectangleText}>Power: {item.power}</Text>
+                            {/* Add more fields as needed */}
                         </View>
                     </View>
                 ))}
-
-                <Button
-                    title="Change Rectangle Count"
-                    onPress={() => setRectangleCount(rectangleCount + 1)}
-                />
             </ScrollView>
         </View>
     );
 }
 
 export default HomeScreen;
+
