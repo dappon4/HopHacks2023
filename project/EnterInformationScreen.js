@@ -80,8 +80,6 @@ function EnterInformationScreen({ navigation, route }) {
 
     const sendUserInfoSignUp = async () => {
         try {
-            console.log(inputUserName)
-            console.log(inputPassword)
             const response = await fetch(`http://159.223.136.17:5000/register?name=${inputUserName}&password=${inputPassword}&first_name=${inputFirstName}&last_name=${inputLastName}&height=${inputHeight}&weight=${inputWeight}&date_of_birth=${inputDateOfBirth}&nurse_id=${inputNurseId}&doctor_id=${inputDoctorId}`, {
                 method: 'POST',
                 headers: {
@@ -90,7 +88,6 @@ function EnterInformationScreen({ navigation, route }) {
             });
             if (response.ok) {
                 const responseData = await response.text();
-                console.log('server response:', responseData);
                 navigation.navigate('Info', { mode: "login" })
             } else {
                 console.error('server error:', response.status, response.statusText);
