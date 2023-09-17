@@ -73,6 +73,7 @@ function CompatibilityScreen({ navigation, route }) {
         navigation.navigate('Home', { userInfo: [route.params.rx[1]] })
     }
 
+    
     return (
         <View style={styles.container}>
             {responseData && responseData.map((data, index) => (
