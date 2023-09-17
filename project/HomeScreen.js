@@ -10,6 +10,13 @@ function HomeScreen({ navigation, route }) {
     const [userInfo, setUserInfo] = useState(null)
     const [rectangleCount, setRectangleCount] = useState(3); // 長方形の数を設定
 
+    useEffect(() => {
+        if (route.params?.userInfo) {
+            setUserInfo(route.params.userInfo);
+            console.log(userInfo);
+        }
+    }, [route.params])
+
     // 長方形のテキストデータを生成
     useEffect(() => {
         const data = [];
@@ -18,13 +25,6 @@ function HomeScreen({ navigation, route }) {
         }
         setTextData(data);
     }, [rectangleCount]);
-
-    useEffect(() => {
-        if (route.params?.userInfo) {
-            setUserInfo(route.params.userInfo);
-            console.log(userInfo);
-        }
-    }, [route.params])
 
     return (
         <View style={styles.container}>

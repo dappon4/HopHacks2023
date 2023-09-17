@@ -22,23 +22,20 @@ function EnterInformationScreen({ navigation, route }) {
     }
 
     const sendUserInfoLogIn = async () => {
-        const userData = new FormData;
-        userData.append({
-            name: inputUserName,
-            password: inputPassword,
-        })
         try {
-            const response = await fetch('http://159.223.136.17:5000/login', {
+            console.log("apple")
+            console.log(inputUserName)
+            console.log(inputPassword)
+            const response = await fetch(`http://159.223.136.17:5000/login?name=${inputUserName}&password=${inputPassword}`, {
                 method: 'POST',
-                body: userData,
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
             if (response.ok) {
-                const responseData = await response;
-
+                const responseData = await response.text();
                 console.log('server response:', responseData);
+
 
                 navigation.navigate('Home', { userInfo: responseData })
             } else {
@@ -59,13 +56,12 @@ function EnterInformationScreen({ navigation, route }) {
                 <TextInput style={styles.textContainer}
                     placeholder="Enter username"
                     onChangeText={handleUserNameChange}
-                    value={inputUserName}
 
                 />
                 <TextInput style={styles.textContainer}
                     placeholder="Enter password"
                     onChangeText={handlePasswordChange}
-                    value={inputPassword}
+
                 />
                 <TouchableOpacity onPress={sendUserInfoLogIn}>
                     <Image source={login} style={{ width: 100, height: 200 }} resizeMode='contain' />
