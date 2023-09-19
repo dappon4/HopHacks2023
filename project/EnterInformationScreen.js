@@ -110,13 +110,13 @@ function EnterInformationScreen({ navigation, route }) {
         return (
             <View style={{ marginTop: 100, flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
 
-                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2 }]}
-                    placeholder="  Enter username"
+                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2, padding: 15 }]}
+                    placeholder="Enter username"
                     onChangeText={handleUserNameChange}
 
                 />
-                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2 }]}
-                    placeholder="  Enter password"
+                <TextInput secureTextEntry={true} style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2, padding: 15 }]}
+                    placeholder="Enter password"
                     onChangeText={handlePasswordChange}
 
                 />
@@ -130,48 +130,48 @@ function EnterInformationScreen({ navigation, route }) {
     } else if (route.params.mode == "signup") {
         return (
             <View style={{ marginTop: 100, alignItems: 'center', justifyContent: 'center' }}>
-                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2 }]}
-                    placeholder="  Enter username"
+                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2, padding: 15 }]}
+                    placeholder="Enter username"
                     onChangeText={handleUserNameChange}
 
                 />
-                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2 }]}
-                    placeholder="  Enter password"
+                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2, padding: 15 }]}
+                    placeholder="Enter password"
                     onChangeText={handlePasswordChange}
 
                 />
-                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2 }]}
-                    placeholder="  Enter first name"
+                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2, padding: 15 }]}
+                    placeholder="Enter first name"
                     onChangeText={handleFirstNameChange}
 
                 />
-                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2 }]}
-                    placeholder="  Enter last name"
+                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2, padding: 15 }]}
+                    placeholder="Enter last name"
                     onChangeText={handleLastNameChange}
 
                 />
-                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2 }]}
-                    placeholder="  Enter height"
+                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2, padding: 15 }]}
+                    placeholder="Enter height"
                     onChangeText={handleHeightChange}
 
                 />
-                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2 }]}
-                    placeholder="  Enter weight"
+                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2, padding: 15 }]}
+                    placeholder="Enter weight"
                     onChangeText={handleWeightChange}
 
                 />
-                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2 }]}
-                    placeholder="  Enter date of birth"
+                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2, padding: 15 }]}
+                    placeholder="Enter date of birth"
                     onChangeText={handleDateOfBirthChange}
 
                 />
-                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2 }]}
-                    placeholder="  Enter nurse id"
+                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2, padding: 15 }]}
+                    placeholder="Enter nurse id"
                     onChangeText={handleNurseIdChange}
 
                 />
-                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2 }]}
-                    placeholder="  Enter doctor id"
+                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2, padding: 15 }]}
+                    placeholder="Enter doctor id"
                     onChangeText={handleDoctorIdChange}
 
                 />

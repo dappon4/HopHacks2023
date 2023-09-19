@@ -145,7 +145,7 @@ function AddScreen({ navigation, route }) {
                 }
                 <Image source={orBlack} style={{ width: 100, height: 100, alignSelf: 'center' }} resizeMode='contain' />
 
-                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2, marginLeft: 10 }]}
+                <TextInput style={[styles.textinputcurved, { marginTop: 2, marginBottom: 2, marginLeft: 10, padding : 15 }]}
                     placeholder="Enter drug name"
                     onChangeText={handleInputChange} // 入力値の変更を検知して関数を呼び出す
                     value={inputValue} // 入力値を状態に紐付ける

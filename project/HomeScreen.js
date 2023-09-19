@@ -25,6 +25,7 @@ function HomeScreen({ navigation, route }) {
             await new Promise(r => setTimeout(r, 1000));
             if (response.data !== "No prescriptions found") {
                 setDrugData(response.data);
+                console.log(response.data);
             } else {
                 setDrugData(null);
             }

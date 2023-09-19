@@ -73,9 +73,10 @@ function CompatibilityScreen({ navigation, route }) {
         navigation.navigate('Home', { userInfo: [route.params.rx[1]] })
     }
 
-    
+
     return (
         <View style={styles.container}>
+            <Text style={styles.compatibilityText}>Interactions of {route.params.rx[2]}</Text>
             {responseData && responseData.map((data, index) => (
                 <View key={index}>
                     <Text style={styles.compatibilityText}>Name: {data.Name}</Text>
